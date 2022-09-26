@@ -1,0 +1,984 @@
+var yCodeTimer = null;
+var yCodeSecond = 60;
+var barLogin = false, barLoginPwd = false, barRegister = false, barMima = false;
+var window_width=$(window).width() //窗口宽度
+$(function () {
+    //分辨率宽度小于1085，不需要验证
+    if(window_width<=1085){
+        $('#kuaisuyanzheng_login').hide();
+        $('#dialog_register').hide();
+        $('#phonelogin').hide();
+    }
+    $(".plus-dialog-body-form-codelogin").click(function () {
+        $(".plus-dialog-body-form-section").hide();
+        $(".plus-dialog-login-code").show();
+        $(".plus-dialog-mask").hide();
+    });
+    $(".plus-dialog-body-form-pwdlogin").click(function () {
+        $(".plus-dialog-body-form-section").hide();
+        $(".plus-dialog-login").show();
+        $(".plus-dialog-mask").hide();
+    });
+
+    $(".plus-dialog-body-form-switch-login").click(function () {
+
+        $(".plus-dialog-body-form-section").hide();
+        $(".plus-dialog-login").show();
+        $(".plus-dialog-mask").hide();
+
+        $(this).hide();
+        $(".plus-dialog-body-form-switch-register").show();
+        $(".plus-dialog-body-form-switch-mima").show();
+
+    });
+
+    $(".plus-dialog-body-form-switch-register").click(function () {
+
+        $(".plus-dialog-body-form-section").hide();
+        $(".plus-dialog-register").show();
+        $(".plus-dialog-mask").hide();
+
+        $(this).hide();
+        $(".plus-dialog-body-form-switch-login").show();
+        $(".plus-dialog-body-form-switch-mima").hide();
+    });
+
+    $(".plus-dialog-body-form-switch-mima").click(function () {
+        $(".plus-dialog-body-form-section").hide();
+        $(".plus-dialog-mima").show();
+        $(".plus-dialog-mask").hide();
+
+        $(this).hide();
+        $(".plus-dialog-body-form-switch-login").show();
+    });
+
+    $(".tt-top-banner-link-list-item-target-register").click(function () {
+
+        $(".plus-dialog-membership").show();
+
+        $(".plus-dialog-body-form-section").hide();
+        $(".plus-dialog-register").show();
+        $(".plus-dialog-mask").hide();
+
+        $(".plus-dialog-body-form-switch-register").hide();
+        $(".plus-dialog-body-form-switch-login").show();
+    });
+
+    $(".tt-top-banner-link-list-item-target-login").click(function () {
+        $(".plus-dialog-membership").show();
+        $(".plus-dialog-body-form-section").hide();
+        $(".plus-dialog-login").show();
+        $(".plus-dialog-mask").hide();
+        $(".plus-dialog-body-form-switch-login").hide();
+        $(".plus-dialog-body-form-switch-register").show();
+    });
+    $(".plus-dialog-close").click(function () {
+        CloseDialog();
+    });
+
+    /* 设置弹框背景高度 */
+    var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+    $('.plus-dialog').height(scrollHeight);
+
+    $(".barLogin").slideToUnlock(
+        {
+            height: 36,
+            width: 320,
+            successFunc: function () {
+                if (!VLoginCode()) {
+                    SlideInit();
+                    return false;
+                }
+                barLogin = true;
+            }
+        }
+    );
+
+    $(".barLoginPwd").slideToUnlock(
+        {
+            height: 36,
+            width: 320,
+            successFunc: function () {
+                if (!VLoginPwd()) {
+                    SlideInit();
+                    return false;
+                }
+                barLoginPwd = true;
+            }
+        }
+    );
+    $(".barRegister").slideToUnlock(
+        {
+            height: 36,
+            width: 320,
+            successFunc: function () {
+
+                if (!VLoginRegister()) {
+                    SlideInit();
+                    return false;
+                }
+
+                barRegister = true;
+            }
+        }
+    );
+
+    //barMima
+    $(".barMima").slideToUnlock(
+        {
+            height: 36,
+            width: 320,
+            successFunc: function () {
+
+                if (!VLoginMima()) {
+                    SlideInit();
+                    return false;
+                }
+
+                barMima = true;
+            }
+        }
+    );
+
+    //登录（密码）
+    $(".plus-dialog-body-form-login").click(function () {
+        if (!VLoginPwd()) {
+            SlideInit();
+            return false;
+        }
+        //分辨率宽度小于1085，不需要验证
+        if(window_width<=1085){
+            barLoginPwd=true
+        }
+        if (barLoginPwd) {
+            $(".plus-dialog-mask").show();
+
+            var phone = $.trim($("#txtPhone").val());
+            var pwd = $.trim($("#txtPwd").val());
+			
+            $.ajax({
+                type: "Post",
+                url: '/index.php?c=Users&a=do_login&t='+Math.random(),
+                dataType: "json",
+                data: { username:phone, password: pwd},
+                beforeSend: function (XMLHttpRequest) {
+
+                },
+                success: function (data) {
+                    console.log(data);
+                    if (data.status == 1) {
+                        CloseDialog();
+                        barLoginPwd = false;
+
+                        if (get_Cookie("is_login_page") != null) {
+                            window.location = '/index.php/Users/index';
+                        } else {
+                            window.location.reload();
+                        }
+                    } else {
+                        swal("", data.msg, "error");
+                        $(".plus-dialog-body").find(".plus-dialog-mask").hide();
+                        SlideInit();
+                        return false;
+                    }
+                },
+                error: function (err) {
+                    swal("", "网络问题，请稍后再试！", "error");
+                    SlideInit();
+                    $(".plus-dialog-body").find(".plus-dialog-mask").hide();
+                }
+            });
+        }
+        else {
+            //alert("请快速验证！");
+            swal("", "请快速验证！", "error");
+            return false;
+        }
+    });
+
+    //登录（验证码）
+    $(".plus-dialog-body-form-logicode").click(function () {
+        if (!VLoginCode()) {
+            SlideInit();
+            return false;
+        }
+
+        var code = $.trim($("#txtLoginCCode").val());
+        if (code == "") {
+            swal("", "验证码不能为空！", "error");
+            SlideInit();
+            return false;
+        }
+        else {
+            if (!isNumber(code)) {
+                swal("", "验证码是数字！", "error");
+                SlideInit();
+                return false;
+            }
+        }
+        //分辨率宽度小于1085，不需要验证
+        if(window_width<=1085){
+            barLogin=true
+        }
+        if (barLogin) {
+            $(".plus-dialog-mask").show();
+
+            var phone = $.trim($("#txtLoginCPhone").val());
+            var code = $.trim($("#txtLoginCCode").val());
+            $.post('/index.php?&c=Users&a=code_login',{ username:phone,code:code  },function (data) {
+                if (data.status == "1") {
+                    //alert("登录成功！");
+                    barLogin = false;
+                    if (get_Cookie("is_login_page") != null) {
+                        window.location = '/index.php/Users/index';
+                    }else {
+                        window.location.reload();
+                    }
+
+                }
+                else {
+                    swal("", data.msg,"error");
+                    $(".plus-dialog-mask").hide();
+                    SlideInit();
+                    return false;
+                }
+            },'json')
+
+
+        }
+        else {
+            //alert("请快速验证！");
+            swal("", "请快速验证！", "error");
+            return false;
+        }
+    });
+
+    //注册
+    $(".plus-dialog-body-form-register").click(function () {
+
+        if (!VLoginRegister()) {
+            SlideInit();
+            return false;
+        }
+        var code = $.trim($("#txtRegisterCode").val());
+        if (code == "") {
+            swal("", "验证码不能为空！", "error"); //SlideInit();
+            return false;
+        }
+        else {
+            if (!isNumber(code)) {
+                swal("", "验证码是数字！", "error"); //SlideInit();
+                return false;
+            }
+        }
+
+        var ckbRegisterOK = $("#ckbRegisterOK").prop('checked');
+        if (!ckbRegisterOK) {
+            swal("", "请阅读注册协议和注册隐私条例后勾选！", "error"); //SlideInit();
+            return false;
+        }
+		//分辨率宽度小于1085，不需要验证
+        if(window_width<=1085){
+            barRegister=true
+        }
+        if (barRegister) {
+            $(".plus-dialog-mask").show();
+
+            var phone = $.trim($("#txtRegisterPhone").val());
+            var pwd = $.trim($("#txtRegisterPwd").val());
+            var pwd1 = $.trim($("#txtRegisterPwd2").val());
+            var code = $.trim($("#txtRegisterCode").val());
+
+            $.ajax({
+                type: "Post",
+                url: "/index.php/Users/reg",
+                dataType: "json",
+                data: { username:phone,password:pwd,password2:pwd1,code:code ,scene:1},
+                beforeSend: function (XMLHttpRequest) {
+
+                },
+                success: function (data) {
+                    if(data.status==1){
+                        if (get_Cookie("is_login_page") != null) {
+                            window.location = '/index.php/Users/index';
+                        } else {
+                            swal({
+                                title: '温馨提示',
+                                text: "恭喜您注册成功",
+                                type: "success",
+                                icon: "success",
+                                button: "确定",
+                            }, function () {
+                                window.location.reload();
+                            });
+                        }
+
+                    }else{
+                        swal({
+                            title: '温馨提示',
+                            text: "抱歉，注册失败",
+                            type: "warning",
+                            icon: "warning",
+                            button: "确定",
+                        }, function () {
+                            window.location.reload();
+                        });
+                    }
+
+                },
+                error: function (err) {
+                    $(".plus-dialog-mask").hide(); SlideInit(); $("#ckbRegisterOK").prop("checked", false); 
+                    swal("", "网络问题，请稍后再试！", "error");
+                }
+            });
+        }
+        else {
+            //alert("请快速验证！");
+            swal("", "请快速验证！", "error"); $("#ckbRegisterOK").prop("checked", false);
+            return false;
+        }
+    });
+
+    //重置密码
+    $(".plus-dialog-body-form-mima").click(function () {
+        if (!VLoginMima()) {
+            SlideInit();
+            return false;
+        }
+
+        var code = $.trim($("#txtSetCode").val());
+        if (code == "") {
+            swal("", "验证码不能为空！", "error"); //SlideInit();
+            return false;
+        }
+        else {
+            if (!isNumber(code)) {
+                swal("", "验证码是数字！", "error"); //SlideInit();
+                return false;
+            }
+        }
+        
+        if (barMima) {
+            $(".plus-dialog-mask").show();
+
+            var phone = $.trim($("#txtSetPhone").val());
+            var pwd = $.trim($("#txtSetPwd").val());
+            var pwd1 = $.trim($("#txtSetPwd2").val());
+            var code = $.trim($("#txtSetCode").val());
+
+            $.ajax({
+                type: "Post",
+                url: "/index.php?c=Users&a=set_pwd",
+                dataType: "json",
+                data: { password:pwd,password2:pwd1,code:code,phone:phone },
+                beforeSend: function (XMLHttpRequest) {
+
+                },
+                success: function (data) {
+
+                        if (data.status == "1") {
+                            //alert("注册成功，请登录！");
+                            CloseDialog();
+                            barMima = false;
+                            if (getUrlParam("ReturnUrl") != null) {
+                                window.location = getUrlParam("ReturnUrl");
+                            } else {
+                                swal({
+                                    title: '温馨提示',
+                                    text: data.msg,
+                                    type: "success",
+                                    icon: "success",
+                                    button: "确定",
+                                }, function () {
+                                    window.location.reload();
+                                });
+                            }
+                        }
+                        else {
+                            swal("", data.msg, "error");
+                            $(".plus-dialog-mask").hide(); SlideInit(); 
+                            return false;
+                        }
+
+                },
+                error: function (err) {
+                    $(".plus-dialog-mask").hide(); SlideInit(); 
+                    swal("", "网络问题，请稍后再试！", "error");
+                }
+            });
+        }
+        else {
+            //alert("请快速验证！");
+            swal("", "请快速验证！", "error"); 
+            return false;
+        }
+    });
+
+    //获取验证码（登录）
+    $(".loginccode").click(function () {
+
+        var phone = $.trim($("#txtLoginCPhone").val());
+        if (phone == "") {
+            //alert("手机号不能为空！");
+            swal("", "手机号不能为空！", "error"); SlideInit();
+            return false;
+        } else {
+            if (!VerifyPhone(phone)) {
+                //alert("手机号错误！");
+                swal("", "手机号错误！", "error"); SlideInit();
+                return false;
+            }
+        }
+        //分辨率宽度小于1085，不需要验证
+        if(window_width<=1085){
+            barLogin=true
+        }
+        if (barLogin) {
+            var o = $(".loginccode");
+            var url = "/api.php?c=Shortmsg&a=send_msg&mobile="+phone;
+            $.ajax({
+                type: "get",
+                url: url,
+                dataType: "json",
+                beforeSend: function (XMLHttpRequest) {
+
+                },
+                success: function (data) {
+                    if (data.status == "1") {
+                        o.attr("disabled", true).css("pointer-events", "none");
+                        o.text("59s后可获取");
+                        yCodeSecond = 59;
+
+                        if (yCodeTimer != null) {
+                            clearInterval(yCodeTimer);
+                        }
+
+                        yCodeTimer = setInterval(function () {
+                            if (yCodeSecond <= 1) {
+                                clearInterval(yCodeTimer);
+                                o.text("重新获取");
+                                o.removeAttr("disabled").removeAttr("style");
+                                return;
+                            }
+                            yCodeSecond--;
+                            o.text(yCodeSecond + "s后可获取");
+
+                        }, 1000);
+                    }
+                    else {
+                        swal("", data.msg, "error"); SlideInit();
+                        return false;
+                    }
+                },
+                error: function (err) {
+                    swal("", "网络问题，请稍后再试！", "error"); SlideInit();
+                }
+            });
+        }
+        else {
+            //alert("请快速验证！");
+            swal("", "请快速验证！", "error");
+            return false;
+        }
+    });
+    
+    //获取验证码（注册）
+    $(".registercode").click(function () {
+        var phone = $.trim($("#txtRegisterPhone").val());
+        if (phone == "") {
+            //alert("手机号不能为空！");
+            swal("", "手机号不能为空！", "error"); SlideInit();
+            return false;
+        } else {
+            if (!VerifyPhone(phone)) {
+                //alert("手机号错误！");
+                swal("", "手机号错误！", "error"); SlideInit();
+                return false;
+            }
+        }
+		//分辨率宽度小于1085，不需要验证
+        if(window_width<=1085){
+            barRegister=true
+        }
+        if (barRegister) {
+            var o = $(".registercode");
+            var url = "/api.php?c=Shortmsg&a=send_msg&mobile="+phone;
+            $.ajax({
+                type: "get",
+                url: url,
+                dataType: "json",
+                beforeSend: function (XMLHttpRequest) {
+
+                },
+                success: function (data) {
+                    if (data.status == "1") {
+                        o.attr("disabled", true).css("pointer-events", "none");
+                        o.text("59s后可获取");
+                        yCodeSecond = 59;
+
+                        if (yCodeTimer != null) {
+                            clearInterval(yCodeTimer);
+                        }
+
+                        yCodeTimer = setInterval(function () {
+                            if (yCodeSecond <= 1) {
+                                clearInterval(yCodeTimer);
+                                o.text("重新获取");
+                                o.removeAttr("disabled").removeAttr("style");
+                                return;
+                            }
+                            yCodeSecond--;
+                            o.text(yCodeSecond + "s后可获取");
+
+                        }, 1000);
+                    }
+                    else {
+                        swal("", data.msg, "error"); SlideInit();
+                        return false;
+                    }
+                },
+                error: function (err) {
+                    swal("", "网络问题，请稍后再试！", "error"); SlideInit();
+                }
+            });
+        } else {
+            //alert("请快速验证！");
+            swal("", "请快速验证！", "error");
+            return false;
+        }
+    });
+//获取验证码（重置密码）
+    $(".setcode").click(function () {
+
+        var phone = $.trim($("#txtSetPhone").val());
+        if (phone == "") {
+            //alert("手机号不能为空！");
+            swal("", "手机号不能为空！", "error"); SlideInit();
+            return false;
+        } else {
+            if (!VerifyPhone(phone)) {
+                //alert("手机号错误！");
+                swal("", "手机号错误！", "error"); SlideInit();
+                return false;
+            }
+        }
+        if (barMima) {
+            var o = $(".setcode");
+            var url = "/api.php?c=Shortmsg&a=send_msg&mobile="+phone+"&t="+Math.random();
+            $.ajax({
+                type: "get",
+                url: url,
+                data:{type:'phone',send:phone},
+                dataType: "json",
+                beforeSend: function (XMLHttpRequest) {
+                },
+                success: function (data) {
+                    if (data.status == "1") {
+                        o.attr("disabled", true).css("pointer-events", "none");
+                        o.text("59s后可获取");
+                        yCodeSecond = 59;
+
+                        if (yCodeTimer != null) {
+                            clearInterval(yCodeTimer);
+                        }
+                        yCodeTimer = setInterval(function () {
+                            if (yCodeSecond <= 1) {
+                                clearInterval(yCodeTimer);
+                                o.text("重新获取");
+                                o.removeAttr("disabled").removeAttr("style");
+                                return;
+                            }
+                            yCodeSecond--;
+                            o.text(yCodeSecond + "s后可获取");
+                        }, 1000);
+                    }
+                    else {
+                        swal("", data.msg, "error"); SlideInit();
+                        return false;
+                    }
+                },
+                error: function (err) {
+                    swal("", "网络问题，请稍后再试！", "error"); SlideInit();
+                }
+            });
+        } else {
+            //alert("请快速验证！");
+            swal("", "请快速验证！", "error");
+            return false;
+        }
+    });
+
+
+    
+});
+
+function goLogin() {
+    $(".plus-dialog-membership").show();
+
+    $(".plus-dialog-body-form-section").hide();
+
+    $(".plus-dialog-body-form-switch-login").hide();
+    $(".plus-dialog-body-form-switch-mima").hide();
+    $(".plus-dialog-body-form-switch-register").show();
+    $(".plus-dialog-body-form-group-add[group='register']").hide();
+
+
+    $(".plus-dialog-login").show();
+    $(".plus-dialog-mask").hide();
+
+    
+}
+
+function isNumber(value) {
+    var patrn = /^[0-9]*$/;
+    if (patrn.exec(value) == null || value == "") {
+        return false
+    } else {
+        return true
+    }
+}
+
+function isDit(value) {
+    var regPos = /^\d+(\.\d+)?$/; //非负浮点数
+    if (regPos.test(value)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+function VerifyPhone(phone) {
+    var myreg = /^[1][3,4,5,6,7,8,9][0-9]{9}$/;
+    if (!myreg.test(phone)) {
+        return false;
+    }
+    return true;
+}
+
+function VerifyPwd(pwd) {
+    if (pwd.length < 6 || pwd.length >= 20) {
+        return 0;
+    } else {
+        return 1;
+        /*var reg = /[a-zA-Z]+(?=\d+)|\d+(?=[a-zA-Z]+)/g;
+        if (reg.test(pwd)) {//true,说明有英文字母或数字
+            return 1;
+        } else {
+            return -1;
+        }*/
+    }
+    return -2;
+}
+
+function VLoginPwd() {
+    var phone = $.trim($("#txtPhone").val());
+
+    if (phone == "") {
+        //alert("手机号不能为空！");
+        swal("", "手机号不能为空！", "error");
+        //SlideInit();
+        return false;
+    } else {
+        if (!VerifyPhone(phone)) {
+            //alert("手机号错误！");
+            swal("", "手机号错误！", "error");
+            //SlideInit();
+            return false;
+        }
+    }
+
+    var pwd = $.trim($("#txtPwd").val());
+    if (pwd == "") {
+        //alert("密码不能为空！");
+        swal("", "密码不能为空！", "error");
+        //SlideInit();
+        return false;
+    } else {
+        var rst = VerifyPwd(pwd);
+        if (rst == 0) {
+            //alert("密码长度错误，长度是8位到19位！");
+            swal("", "密码长度错误，长度是8位到19位！", "error");
+            //SlideInit();
+            return false;
+        } else if (rst == -1) {
+            //alert("密码格式错误，需包含数字和字母！");
+            swal("", "密码格式错误，需包含数字和字母！", "error");
+            //SlideInit();
+            return false;
+        } else if (rst == -2) {
+            //alert("密码错误！");
+            swal("", "密码错误！", "error");
+            //SlideInit();
+            return false;
+        }
+    }
+    return true;
+}
+
+function VLoginCode() {
+    var phone = $.trim($("#txtLoginCPhone").val());
+    if (phone == "") {
+        //alert("手机号不能为空！");
+        swal("", "手机号不能为空！", "error");
+        //SlideInit();
+        return false;
+    } else {
+        if (!VerifyPhone(phone)) {
+            //alert("手机号错误！");
+            swal("", "手机号错误！", "error");
+            //SlideInit();
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+function VLoginRegister() {
+    var phone = $.trim($("#txtRegisterPhone").val());
+    if (phone == "") {
+        //alert("手机号不能为空！");
+        swal("", "手机号不能为空！", "error"); //SlideInit();
+        return false;
+    } else {
+        if (!VerifyPhone(phone)) {
+            //alert("手机号错误！");
+            swal("", "手机号错误！", "error"); //SlideInit();
+            return false;
+        }
+    }
+
+    var pwd = $.trim($("#txtRegisterPwd").val());
+    if (pwd == "") {
+        //alert("密码不能为空！");
+        swal("", "密码不能为空！", "error"); //SlideInit();
+        return false;
+    } else {
+        var rst = VerifyPwd(pwd);
+        if (rst == 0) {
+            //alert("密码长度错误，长度是8位到19位！");
+            swal("", "密码长度错误，长度是8位到19位！", "error"); //SlideInit();
+            return false;
+        } else if (rst == -1) {
+            //alert("密码格式错误，需包含数字和字母！");
+            swal("", "密码格式错误，需包含数字和字母！", "error"); //SlideInit();
+            return false;
+        } else if (rst == -2) {
+            //alert("密码错误！");
+            swal("", "密码错误！", "error"); //SlideInit();
+            return false;
+        }
+    }
+    var pwd1 = $.trim($("#txtRegisterPwd2").val());
+    if (pwd1 == "") {
+        //alert("密码不能为空！");
+        swal("", "确认密码不能为空！", "error"); //SlideInit();
+        return false;
+    } else {
+        var rst = VerifyPwd(pwd1);
+        if (rst == 0) {
+            //alert("密码长度错误，长度是8位到19位！");
+            swal("", "确认密码长度错误，长度是8位到19位！", "error"); //SlideInit();
+            return false;
+        } else if (rst == -1) {
+            //alert("密码格式错误，需包含数字和字母！");
+            swal("", "确认密码格式错误，需包含数字和字母！", "error"); //SlideInit();
+            return false;
+        } else if (rst == -2) {
+            //alert("密码错误！");
+            swal("", "确认密码错误！", "error"); //SlideInit();
+            return false;
+        }
+
+        if (pwd != pwd1) {
+            swal("", "两次密码不一致！", "error"); //SlideInit();
+            return false;
+        }
+    }
+
+
+    return true;
+}
+
+function VLoginMima() {
+    var phone = $.trim($("#txtSetPhone").val());
+    if (phone == "") {
+        //alert("手机号不能为空！");
+        swal("", "手机号不能为空！", "error"); //SlideInit();
+        return false;
+    } else {
+        if (!VerifyPhone(phone)) {
+            //alert("手机号错误！");
+            swal("", "手机号错误！", "error"); //SlideInit();
+            return false;
+        }
+    }
+
+    var pwd = $.trim($("#txtSetPwd").val());
+    if (pwd == "") {
+        //alert("密码不能为空！");
+        swal("", "密码不能为空！", "error"); //SlideInit();
+        return false;
+    } else {
+        var rst = VerifyPwd(pwd);
+        if (rst == 0) {
+            //alert("密码长度错误，长度是8位到19位！");
+            swal("", "密码长度错误，长度是6位到19位！", "error"); //SlideInit();
+            return false;
+        } else if (rst == -1) {
+            //alert("密码格式错误，需包含数字和字母！");
+            swal("", "密码格式错误，需包含数字和字母！", "error"); //SlideInit();
+            return false;
+        } else if (rst == -2) {
+            //alert("密码错误！");
+            swal("", "密码错误！", "error"); //SlideInit();
+            return false;
+        }
+    }
+    var pwd1 = $.trim($("#txtSetPwd2").val());
+    if (pwd1 == "") {
+        //alert("密码不能为空！");
+        swal("", "确认密码不能为空！", "error"); //SlideInit();
+        return false;
+    } else {
+        var rst = VerifyPwd(pwd1);
+        if (rst == 0) {
+            //alert("密码长度错误，长度是8位到19位！");
+            swal("", "确认密码长度错误，长度是8位到19位！", "error"); //SlideInit();
+            return false;
+        } else if (rst == -1) {
+            //alert("密码格式错误，需包含数字和字母！");
+            swal("", "确认密码格式错误，需包含数字和字母！", "error"); //SlideInit();
+            return false;
+        } else if (rst == -2) {
+            //alert("密码错误！");
+            swal("", "确认密码错误！", "error"); //SlideInit();
+            return false;
+        }
+
+        if (pwd != pwd1) {
+            swal("", "两次密码不一致！", "error"); //SlideInit();
+            return false;
+        }
+    }
+    return true;
+}
+
+function CloseDialog()
+{
+    $(".plus-dialog").hide();
+    $(".plus-dialog-register").hide();
+    $(".plus-dialog-code").hide();
+    $(".plus-dialog").find("input").val("");
+
+    SlideInit();
+}
+
+function SlideInit() {
+    barLogin = false;
+    barLoginPwd = false;
+    barRegister = false;
+
+    $(".barLogin").slideToUnlock(
+        {
+            height: 36,
+            width: 320,
+            successFunc: function () {
+                if (!VLoginCode()) {
+                    SlideInit();
+                    return false;
+                }
+                barLogin = true;
+            }
+        }
+    );
+
+    $(".barLoginPwd").slideToUnlock(
+        {
+            height: 36,
+            width: 320,
+            successFunc: function () {
+                if (!VLoginPwd()) {
+                    SlideInit();
+                    return false;
+                }
+                barLoginPwd = true;
+            }
+        }
+    );
+
+
+    $(".barRegister").slideToUnlock(
+        {
+            height: 36,
+            width: 320,
+            successFunc: function () {
+                if (!VLoginRegister()) {
+                    SlideInit();
+                    return false;
+                }
+
+                barRegister = true;
+            }
+        }
+    );
+
+    $(".barMima").slideToUnlock(
+        {
+            height: 36,
+            width: 320,
+            successFunc: function () {
+
+                if (!VLoginMima()) {
+                    SlideInit();
+                    return false;
+                }
+
+                barMima = true;
+            }
+        }
+    );
+}
+
+function LoginOut() {
+
+    $.ajax({
+        type: "Post",
+        url: "/auth/login.aspx",
+        dataType: "text",
+        data: { Action: "loginout", "callback": '?' },
+        beforeSend: function (XMLHttpRequest) {
+
+        },
+        success: function (data) {
+            if (QC.Login.check()) {
+                QC.Login.signOut();
+            }
+            //if (WB2.checkLogin()) {//检查是否已登录
+            //    WB2.logout(function () {//退出登录方法
+            //        //回调方法
+            //    });
+            //}
+            window.location = "/default.aspx";
+        },
+        error: function (err) {
+            swal("", "网络问题，请稍后再试！", "error");
+        }
+    });
+}
+
+//获取url中的参数
+function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]); return null; //返回参数值
+}
+function get_Cookie(name)
+{
+    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+    if(arr=document.cookie.match(reg))
+        return unescape(arr[2]);
+    else
+        return null;
+}

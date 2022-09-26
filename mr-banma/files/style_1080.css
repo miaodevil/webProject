@@ -1,0 +1,222 @@
+@media screen and (min-width:981px) and (max-width: 1080px) {
+    .plus-dialog {
+        min-width: 1080px;
+    }
+    /*首页*/
+    .bm-top-banner{width: 1080px;min-width: 1080px;}
+    .bm-top-banner >.flexbox-n{width: 1080px;}
+    .bm-logo-nr{width: 1080px;}
+    .bm-nav-box{width: 1080px;}
+    .bm-nav-fixed{width: 1080px;}
+    .bm-nav-fixed .bm-nav-items{padding: 0 12px;}
+    .banner{min-width: 1080px;}
+    .newshop{width: 1080px;}
+    .bm-newshop{width: 1080px;}
+    .bm-scene{width: 1080px;}
+    .bm-scene-title{width: 1080px;}
+    .bm-scene-items{width: 247px;}
+    .bm-specialshop{width: 1080px;}
+    .bm-fast{width: 1080px;}
+    .bm-fast-list{width: 1080px;}
+    .bm-fast-list-left{width: 528px;}
+    .allsay{width: 1080px;}
+    .bm-allsay{width: 1080px;}
+    .friendlinks{min-width: 1080px;}
+    .bm-friendlinks{width: 1080px;}
+    .bm-foot{min-width: 1080px;}
+    .bm-900{width: 1080px;}
+    .bm-links{width: 1080px;}
+    .bm-foot-add{width: 1080px;padding: 30px 0;}
+    .bm-nav-left {
+        margin-left: -551px;
+    }
+	.bm-newshop-list-items {
+        margin-right: 13px;
+    }
+	
+	.bm_1080{
+        text-align: center; width: 1080px;margin: auto;padding: 20px 0;
+    }
+        .scenes img{width: 1080px;}
+    #scene_prev{left:0 !important;}
+    #scene_next{right:0 !important;}
+    .bm-scene-list-items{width: 255px;}
+/*列表页，分类页面*/
+    .bm-sitemap-body{width: 1080px;}
+    .bm-category-top{width: 1080px;}
+    .bm-category-body-left{width: 920px;}
+    .bm-category-else{width: 1080px;}
+    .bm-category-else-left{width: 255px;}
+    .bm-category-part{padding-left: 8px;padding-right: 5px;}
+    .bm-category-part-list-items{width: 41px;}
+    .items-1{width: 112px;}
+    .items-3{width: 72px;}
+    /*产品详情页*/
+    .bm-detail{min-width: 1080px;}
+    .bm-detail-body{width: 1080px;}
+    .bm-detail-body-right{margin-left: 18px;}
+    .bm-detail-body-section{width: 1080px;}
+    .section-nav{width: 1080px;}
+    .section-nav-list{width: 1080px;}
+    .section-detail .section-detail-project img{width: 1080px;}
+    .section-detail .section-detail-zhinan img{width: 1080px;}
+    .section-detail .section-detail-baozhuang img{width: 1080px;}
+    .section-detail .section-detail-wenti img{width: 1080px;}
+    .bm-detail-buy-fix-body{width: 1080px;}
+    .bm-tuijian{width: 1080px;}
+    .bm-tuijian-list-items{margin-right: 10px;}
+
+    .ad-content img {
+        max-width: 1080px;
+    }
+    /*购物车*/
+    .tt-section {width: 1080px;  }
+    .tt-shopping-dl-body .flexbox-n{width: 960px;}
+    /*微信支付*/
+    .qrcode{width: 1080px;}
+    /*个人中心*/
+    .bm-contain-gr-body{
+        width: 1080px;
+    }
+    .bm-contain-left {
+        width: 165px;
+    }
+    .bm-top-banner-2 .bm-section {
+        width: 1080px;
+    }
+    .tt-membership-menu-group {
+        padding-left: 40px;
+    }
+    .tt-membership-menu-group .iconfont {
+        left: 12px;
+    }
+    /*常见问题*/
+    .tt-sitemap-body{
+        width: 1080px;
+    }
+    .tt-helpcenter-body{
+        width: 1080px;
+    }
+    .tt-helpcenter-body-left {
+        width: 170px;
+    }
+    /*单页*/
+
+  .scrolllist{
+      width: 1080px;
+  }
+    .scrolllist .imglist_w {
+        width: 1040px;margin-left: 3px;
+    }
+    .scrolllist .imglist_w li {
+        width: 238px;
+    }
+    .single_banner_img{width: 1800px !important; margin-left:-900px !important;}
+    /*企业采购*/
+    .company-ys-list-t {
+        width: 1080px;
+    }
+    .company-ys-items {
+        width: 250px;
+    }
+    .company-ys-items img{
+        width: 100%;
+    }
+    /*安装指南*/
+    #anzhuangzhinan_page{
+        width: 800px;
+        left: 50%;
+        margin-left: -500px;
+    }
+    /*样本列表页*/
+    .tt-demo-body {
+        width: 1080px;
+    }
+    .tt-demo-body-right {
+        width: 889px;
+    }
+    .tt-demo-shoppingcart-fix {
+        margin-left: 372px;
+    }
+    /*斑马社区*/
+    .top-banner{
+        min-width: 1080px;
+    }
+    .bm-main {
+        width: 1080px;
+    }
+    .contain{
+        min-width: 1080px;
+    }
+    .bm-fenlei{
+        width:240px ;
+        float: right;
+    }
+    .bm_com_detail {
+        width: 1080px;
+    }
+    .detail_left {
+        width: 810px;
+        float: left;
+    }
+
+    .detail_right {
+        width: 250px;
+        float: right;
+    }
+    .detail_sxw {
+        width: 760px;
+    }
+    /*场景购买*/
+    .scene {
+        width: 1080px;
+    }
+    .scenebody-main {
+        width: 1080px;
+    }
+    .scene-map {
+        width: 1080px;overflow: hidden;
+    }
+    #scene_shinei {
+        width: 1098px;height: 556px;
+    }
+    #scene_huhuai {
+        width: 1098px;height: 556px;
+    }
+    #scene_bangongshi {
+        width: 1098px;height: 556px;
+    }
+    .scene-show {
+        width: 1080px;
+    }
+    .scene-show-items {
+        margin-right: 10px;
+    }
+    #scene_more{width: 800px !important;}
+
+    /*招商加盟*/
+    .fudong {
+        left: 0px;
+    }
+}
+/*.BM3{display: block !important}*/
+
+@media screen and (min-width:1081px) and (max-width: 1500px) {
+    /*招商加盟*/
+    .fudong {
+        position: absolute;
+        top: 105px;
+        left: -112px;
+        z-index: 11;
+        color: #333;
+        width: 110px;
+        background-color: #fff;
+        text-align: center;
+        border-top: 30px solid #333;
+        padding-bottom: 50px;
+        box-shadow: 0px 0px 5px #999;
+    }
+    .bm-nav-left {
+        margin-left: -651px;
+    }
+}
