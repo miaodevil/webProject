@@ -5,105 +5,818 @@
     <title>斑马先生</title>
     <link rel="stylesheet" type="text/css" href="./files/main.css">
     <link rel="stylesheet" href="./files/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="./files/sweetalert.css"/>
+    <script src="https://www.mr-banma.com/Public/static/js/jquery.min.js" type="text/javascript"
+            charset="utf-8"></script>
+    <script src="https://www.mr-banma.com/Public/layer/layer.js"></script>
+    <link rel="stylesheet" type="text/css" href="./files/swiper.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./files/jcountdown.css"/>
+    <link rel="stylesheet" type="text/css" href="./files/index.css?t=1664267419"/>
+
 </head>
 <body>
 
-    <div class="bm-top-banner">
-        <div class="flexbox-n">
-            <div class="bm-ms">
-                <h2 class="bm-web-ms">
-                    <a href="https://www.mr-banma.com/index.php/singlepage/brand.html">
-                        <img src="./files/book.png" class="icon-s" alt="">
-                        斑马先生，品牌故事
+<div class="bm-top-banner">
+    <div class="flexbox-n">
+        <div class="bm-ms">
+            <h2 class="bm-web-ms">
+                <a href="https://www.mr-banma.com/index.php/singlepage/brand.html">
+                    <img src="./files/book.png" class="icon-s" alt="">
+                    斑马先生，品牌故事
+                </a>
+            </h2>
+        </div>
+
+        <div class="bm-gd">
+            <a href="">
+                <img src="./files/gd.png" class="icon-s" alt="">
+                818遮阳节中奖名单公布
+            </a>
+        </div>
+
+        <div class="bm-bq">
+            <ul class="bm-top-banner-list flexbox-n">
+                <li class="bm-top-banner-list-items">
+                    <a href="javascript:void(0)" onclick="">登录</a>
+                </li>
+                <li class="bm-top-banner-list-items">
+                    <a href="javascript:void(0)" onclick="">注册</a>
+                </li>
+                <li class="bm-top-banner-list-items">
+                    <a href="javascript:void(0)" onclick="">我的订单</a>
+                </li>
+                <li class="bm-top-banner-list-items">
+                    <a href="https://www.mr-banma.com/index.php/Singlepage/jiamengyoushi.html" onclick="">招商加盟</a>
+                </li>
+                <li class="bm-top-banner-list-items top-f">
+                    <a href="https://www.mr-banma.com/index.php/Singlepage/company_buy.html" onclick="">
+                        企业直购
                     </a>
-                </h2>
-            </div>
-
-            <div class="bm-gd">
-                <a href="">
-                    <img src="./files/gd.png" class="icon-s" alt="">
-                    818遮阳节中奖名单公布
-                </a>
-            </div>
-
-            <div class="bm-bq">
-                <ul class="bm-top-banner-list flexbox-n">
-                    <li class="bm-top-banner-list-items">
-                        <a href="javascript:void(0)" onclick="">登录</a>
-                    </li>
-                    <li class="bm-top-banner-list-items">
-                        <a href="javascript:void(0)" onclick="">注册</a>
-                    </li>
-                    <li class="bm-top-banner-list-items">
-                        <a href="javascript:void(0)" onclick="">我的订单</a>
-                    </li>
-                    <li class="bm-top-banner-list-items">
-                        <a href="https://www.mr-banma.com/index.php/Singlepage/jiamengyoushi.html" onclick="">招商加盟</a>
-                    </li>
-                    <li class="bm-top-banner-list-items top-f">
-                        <a href="https://www.mr-banma.com/index.php/Singlepage/company_buy.html" onclick="">
-                            企业直购
-                        </a>
-                        <img src="./files/qiyegou.png" width="16" alt="">
-                    </li>
-                    <li class="bm-top-banner-list-items" style="padding-left:20px;">
-                        <div class="bm-dropdown" style="width:70px; position: relative;">
-                            <p>新零售</p>
-                            <img class="icon-p" src="./files/xiala.png" alt="">
-                            <div class="bm-dropdown-content hide">
-                                <a href="https://www.mr-banma.com/promotor.php" target="_blank"><p>服务商端</p></a>
-                                <a href="https://www.mr-banma.com/store.php" target="_blank"><p>门店端</p></a>
-                            </div>
+                    <img src="./files/qiyegou.png" width="16" alt="">
+                </li>
+                <li class="bm-top-banner-list-items" style="padding-left:20px;">
+                    <div class="bm-dropdown" style="width:70px; position: relative;">
+                        <p>新零售</p>
+                        <img class="icon-p" src="./files/xiala.png" alt="">
+                        <div class="bm-dropdown-content hide">
+                            <a href="https://www.mr-banma.com/promotor.php" target="_blank"><p>服务商端</p></a>
+                            <a href="https://www.mr-banma.com/store.php" target="_blank"><p>门店端</p></a>
                         </div>
-                    </li>
-                    <li class="bm-top-banner-list-items">
-                        <a style="color: #ccc;" href="https://www.mr-banma.com/Public/static/images/yingyezhizhao.jpg" target="_blank">营业执照</a>
-                    </li>
-                    <li class="bm-top-banner-list-items">
-                        <a href="https://en.mr-banma.com" target="_blank">
-                            <i class="iconfont icon-ditu_diqiu"></i> English
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                    </div>
+                </li>
+                <li class="bm-top-banner-list-items">
+                    <a style="color: #ccc;" href="https://www.mr-banma.com/Public/static/images/yingyezhizhao.jpg"
+                       target="_blank">营业执照</a>
+                </li>
+                <li class="bm-top-banner-list-items">
+                    <a href="https://en.mr-banma.com" target="_blank">
+                        <i class="iconfont icon-ditu_diqiu"></i> English
+                    </a>
+                </li>
+            </ul>
+        </div>
 
+    </div>
+</div>
+
+<!-- logo和搜索区-->
+<div class="bm-logo-banner">
+    <div class="bm-logo-nr" style="position: relative;">
+        <h1 class="bm-logo">
+            <a href="index.html">
+                <img src="./files/logo.png" alt="">
+            </a>
+        </h1>
+        <!-- 搜索区-->
+        <div class="bm-search">
+            <ul class="bm-search-linklist">
+                <li class="bm-search-linklist-items">
+                    <a href="javascript:" onclick="">
+                        <img class="icon-s" src="./files/yangben.png" alt="">
+                        <span>样本</span>
+                    </a>
+                </li>
+                <li class="bm-search-linklist-items">
+                    <a href="javascript:" onclick="">
+                        <img class="icon-s" src="./files/cart.png" alt="">
+                        <span>购物车</span>
+                        <span class="bm-cart-count">&nbsp; 0 &nbsp;</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="bm-search-box">
+                <form id="searchform" action="https://www.mr-banma.com/index.php/Search/index.html" method="get">
+                    <label for="keyword"></label>
+                    <input class="bm-search-input" type="text" name="keyword" id="keyword" autocomplete="off"
+                           value="斑马帘" onclick="this.value=''">
+                    <a class="bm-search-btn" href="javascript:void(0)" onclick="">
+                        <img src="./files/search.png" alt="">
+                    </a>
+                </form>
+            </div>
         </div>
     </div>
+</div>
 
-    <div class="bm-logo-banner">
-        <div class="bm-logo-nr" style="position: relative;">
-            <h1 class="bm-logo">
-                <a href="index.html">
-                    <img src="./files/logo.png" alt="">
+<!-- 一级菜单 -->
+<div class="bm-nav">
+    <div class="bm-nav-box">
+        <ul class="bm-nav-list">
+            <li class="bm-nav-items">
+                <a href="./index.html">
+                    首页
+                    <div class="bm-nav-items-line hide"></div>
                 </a>
-            </h1>
-            <div class="bm-search">
-                <ul class="bm-search-linklist">
-                    <li class="bm-search-linklist-items">
-                        <a href="javascript:" onclick="">
-                            <img class="icon-s" src="./files/yangben.png" alt="">
-                            <span>样本</span>
-                        </a>
-                    </li>
-                    <li class="bm-search-linklist-items">
-                        <a href="javascript:" onclick="">
-                            <img class="icon-s" src="./files/cart.png" alt="">
-                            <span>购物车</span>
-                            <span class="bm-cart-count">&nbsp; 0 &nbsp;</span>
-                        </a>
-                    </li>
-                </ul>
-                <div class="bm-search-box">
-                    <form id="searchform" action="#" method="get">
-                        <label for="keyword"></label>
-                        <input class="bm-search-input" type="text" name="keyword" id="keyword" autocomplete="off" value="斑马帘" onclick="this.value=''">
-                        <a class="bm-search-btn" href="javascript:void(0)" onclick="">
-                            <img src="./files/search.png" alt="">
-                        </a>
-                    </form>
-                </div>
-            </div>
-        </div>
+            </li>
+            <li class="bm-nav-items fixed-bm-nav" id="BM56">
+                <a href="https://www.mr-banma.com/index.php/Category/index/cat_id/56.html">
+                    调光窗帘
+                    <div class="bm-nav-items-line hide"></div>
+                </a>
+            </li>
+            <li class="bm-nav-items fixed-bm-nav" id="BM6">
+                <a href="https://www.mr-banma.com/index.php/Category/index/cat_id/6.html">
+                    卷帘
+                    <div class="bm-nav-items-line hide"></div>
+                </a>
+            </li>
+            <li class="bm-nav-items fixed-bm-nav" id="BM7">
+                <a href="https://www.mr-banma.com/index.php/Category/index/cat_id/7.html">
+                    户外遮阳产品
+                    <div class="bm-nav-items-line hide"></div>
+                </a>
+            </li>
+            <li class="bm-nav-items fixed-bm-nav" id="BM57">
+                <a href="https://www.mr-banma.com/index.php/Category/index/cat_id/57.html">
+                    功能购买
+                    <div class="bm-nav-items-line hide"></div>
+                </a>
+            </li>
+            <li class="bm-nav-items fixed-bm-nav" id="BM37">
+                <a href="https://www.mr-banma.com/index.php/singlepage/scene">
+                    场景购买
+                    <div class="bm-nav-items-line hide"></div>
+                </a>
+            </li>
+            <li class="bm-nav-items fixed-bm-nav" id="BM39">
+                <a href="https://www.mr-banma.com/index.php/Category/index/cat_id/39.html">
+                    <img class="nav-icon" src="./files/60a1cb8fc4b55.png" width="14" class="nav_icon">
+                    促销专区
+                    <div class="bm-nav-items-line hide"></div>
+                </a>
+            </li>
+            <li class="bm-nav-items fixed-bm-nav" id="BM23">
+                <a href="https://www.mr-banma.com/sample/index">
+                    <img class="nav-icon" src="./files/60a1c72de94fd.png" width="14" class="nav_icon">
+                    免费样本
+                    <div class="bm-nav-items-line hide"></div>
+                </a>
+            </li>
+            <li class="bm-nav-items fixed-bm-nav" id="BM62">
+                <a href="https://www.mr-banma.com/Singlepage/store">
+                    斑马实力
+                    <div class="bm-nav-items-line hide"></div>
+                </a>
+            </li>
+            <li class="bm-nav-items fixed-bm-nav" id="BM66">
+                <a href="https://www.mr-banma.com/singlepage/service900">
+                    9-0-0服务
+                    <div class="bm-nav-items-line hide"></div>
+                </a>
+            </li>
+            <li class="bm-nav-items fixed-bm-nav" id="BM71">
+                <a href="https://www.mr-banma.com/index.php/Singlepage/five_star.html">
+                    真实案例
+                    <div class="bm-nav-items-line hide"></div>
+                </a>
+            </li>
+        </ul>
     </div>
+</div>
+
+<!-- 一级菜单展示项 -->
+<div class="bm-nav-xls BM56 hide">
+    <div class="bm-nav-xls-left">
+        <ul class="bm-nav-xls-left-ul">
+            <!-- 此处li的id应与下列center和right的class相关联 -->
+            <li class="bm-nav-xls-left-li" id="BM56-20"><a href="/index.php/Category/index/cat_id/20.html">香格里拉帘</a>
+            </li>
+            <li class="bm-nav-xls-left-li" id="BM56-4"><a href="/index.php/Category/index/cat_id/4.html">斑马帘</a></li>
+            <li class="bm-nav-xls-left-li" id="BM56-33"><a href="/index.php/Category/index/cat_id/33.html">蜂巢帘</a></li>
+            <li class="bm-nav-xls-left-li" id="BM56-53"><a href="/index.php/Category/index/cat_id/53.html">垂直帘</a></li>
+            <li class="bm-nav-xls-left-li" id="BM56-54"><a href="/index.php/Category/index/cat_id/54.html">百叶帘</a></li>
+            <li class="bm-nav-xls-left-li" id="BM56-65"><a href="/index.php/Category/index/cat_id/65.html">多层调光帘</a>
+            </li>
+        </ul>
+    </div>
+    <div class="bm-nav-xls-center BM56-20 hide">
+        <h3>香格里拉帘</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>集窗纱、百叶、卷帘三者功能为一体的完美设计，三层组织结构，可任意调节光线，清晰的纱网，古朴典雅的素色情调，造就极佳的视觉效果。</p>
+    </div>
+    <div class="bm-nav-xls-right BM56-20 hide">
+        <video src="/Public/video/mrbanma_xianggelilialian.mp4" controls="controls"
+               poster="https://www.mr-banma.com/Uploads/images/2020-11-16/5fb2034ee324f.png" width="560"
+               height="300"></video>
+
+
+    </div>
+    <div class="bm-nav-xls-center BM56-4 hide">
+        <h3>斑马帘</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>斑马帘是一布一纱相结合的两层面料结构，通过前后两层面料的交错实现调光功能。</p>
+    </div>
+    <div class="bm-nav-xls-right BM56-4 hide">
+        <video src="/Public/video/mrbanma_banmalian.mp4" controls="controls"
+               poster="https://www.mr-banma.com/Uploads/images/2021-05-19/60a46179da20f.jpg" width="560"
+               height="300"></video>
+
+
+    </div>
+    <div class="bm-nav-xls-center BM56-33 hide">
+        <h3>蜂巢帘</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>机织布色彩更加丰富，横竖的纹理组织，使得面料的层次感更强，更加高档美观，视觉舒适度更好。</p>
+    </div>
+    <div class="bm-nav-xls-right BM56-33 hide">
+
+        <a href="/index.php/Category/index/cat_id/33.html"><img
+                src="https://www.mr-banma.com/Uploads/images/2020-11-16/5fb204c9802c7.jpg"></a>
+
+
+    </div>
+    <div class="bm-nav-xls-center BM56-53 hide">
+        <h3>垂直帘</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>
+            打破传统布艺闭合后全遮光的局限性，通过旋转帘片的角度，可实现180度左右自由调光，既看不到室内的活动防窥视，又能实现通风透景效果；同时控制光线的摄入量，达到室内需要的光量，既不影响自然空气进入室内，又不需要开灯，节约资源。</p>
+    </div>
+    <div class="bm-nav-xls-right BM56-53 hide">
+
+        <a href="/index.php/Category/index/cat_id/53.html"><img
+                src="https://www.mr-banma.com/Uploads/images/2021-02-25/6036f912effbf.jpg"></a>
+
+
+    </div>
+    <div class="bm-nav-xls-center BM56-54 hide">
+        <h3>百叶帘</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>百叶帘用铝合金、木竹烤漆为主加工制作而成，具有耐用常新、易清洗、不老化、不褪色、遮阳、隔热、透气等特点，适用于高档写字楼、居室、酒店、别墅等场所。</p>
+    </div>
+    <div class="bm-nav-xls-right BM56-54 hide">
+
+        <a href="/index.php/Category/index/cat_id/54.html"><img
+                src="https://www.mr-banma.com/Uploads/images/2021-02-25/6036fb7caaac5.jpg"></a>
+
+
+    </div>
+    <div class="bm-nav-xls-center BM56-65 hide">
+        <h3>多层调光帘</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>通过帘片独特的开合方式，自由调节光线，遮阳、调光、透气。</p>
+    </div>
+    <div class="bm-nav-xls-right BM56-65 hide">
+
+        <a href="/index.php/Category/index/cat_id/65.html"><img
+                src="https://www.mr-banma.com/Uploads/images/2021-06-12/60c41c41b4289.jpg"></a>
+
+
+    </div>
+</div>
+<div class="bm-nav-xls BM6 hide">
+    <div class="bm-nav-xls-left">
+        <ul class="bm-nav-xls-left-ul">
+            <!-- 此处li的id应与下列center和right的class相关联 -->
+            <li class="bm-nav-xls-left-li" id="BM6-22"><a href="/index.php/Category/index/cat_id/22.html">玻纤卷帘</a></li>
+            <li class="bm-nav-xls-left-li" id="BM6-25"><a href="/index.php/Category/index/cat_id/25.html">100%全遮光卷帘</a>
+            </li>
+            <li class="bm-nav-xls-left-li" id="BM6-28"><a href="/index.php/Category/index/cat_id/28.html">提花大师卷帘</a>
+            </li>
+            <li class="bm-nav-xls-left-li" id="BM6-29"><a href="/index.php/Category/index/cat_id/29.html">阳光面料卷帘</a>
+            </li>
+            <li class="bm-nav-xls-left-li" id="BM6-31"><a href="/index.php/Category/index/cat_id/31.html">经典卷帘</a></li>
+        </ul>
+    </div>
+    <div class="bm-nav-xls-center BM6-22 hide">
+        <h3>玻纤卷帘</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>面料中加入玻璃纤维，防水、防火、防油污。高遮光度，保护隐私空间。阻隔紫外线，保温隔热。</p>
+    </div>
+    <div class="bm-nav-xls-right BM6-22 hide">
+        <video src="/Public/video/mrbanma_juanlian.mp4" controls="controls"
+               poster="https://www.mr-banma.com/Uploads/images/2020-11-04/5fa21a354aa78.jpg" width="560"
+               height="300"></video>
+
+
+    </div>
+    <div class="bm-nav-xls-center BM6-25 hide">
+        <h3>100%全遮光卷帘</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>全新贴合工艺，双面布料效果，反正面都好用的100%全遮光高端卷帘。</p>
+    </div>
+    <div class="bm-nav-xls-right BM6-25 hide">
+        <video src="/Public/video/mrbanma_juanlian.mp4" controls="controls"
+               poster="https://www.mr-banma.com/Uploads/images/2020-11-16/5fb204abe5b37.jpg" width="560"
+               height="300"></video>
+
+
+    </div>
+    <div class="bm-nav-xls-center BM6-28 hide">
+        <h3>提花大师卷帘</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>提花设计、简约大气，尤其适合办公室、五星级酒店、高级会所等使用。 </p>
+    </div>
+    <div class="bm-nav-xls-right BM6-28 hide">
+        <video src="/Public/video/mrbanma_juanlian.mp4" controls="controls"
+               poster="https://www.mr-banma.com/Uploads/images/2020-11-16/5fb205952d71c.jpg" width="560"
+               height="300"></video>
+
+
+    </div>
+    <div class="bm-nav-xls-center BM6-29 hide">
+        <h3>阳光面料卷帘</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>防水、防晒、防火、防霉、防甲醛的阳光面料卷帘，更大程度的满足消费者需求，同时阳光面料多种素颜的色料与室内主体装修色彩协调，也可衬出环境的高雅。</p>
+    </div>
+    <div class="bm-nav-xls-right BM6-29 hide">
+        <video src="/Public/video/mrbanma_juanlian.mp4" controls="controls"
+               poster="https://www.mr-banma.com/Uploads/images/2020-11-16/5fb20b5d84844.jpg" width="560"
+               height="300"></video>
+
+
+    </div>
+    <div class="bm-nav-xls-center BM6-31 hide">
+        <h3>经典卷帘</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>
+            卷帘作为窗饰行业的一款成熟度高、应用广泛的产品，备受广大采购商和消费者的青睐，它既可以减光、遮光，以适应人对光线不同强度的需求；又可以防火、防风、除尘、保暖、消声、隔热、防辐射、防紫外线等，改善居室气候与环境。已成为不可缺少的、功能性和装饰性完美结合的室内装饰品。</p>
+    </div>
+    <div class="bm-nav-xls-right BM6-31 hide">
+        <video src="/Public/video/mrbanma_juanlian.mp4" controls="controls"
+               poster="https://www.mr-banma.com/Uploads/images/2020-11-16/5fb204bb00b8d.jpg" width="560"
+               height="300"></video>
+
+
+    </div>
+</div>
+<div class="bm-nav-xls BM7 hide">
+    <div class="bm-nav-xls-left">
+        <ul class="bm-nav-xls-left-ul">
+            <!-- 此处li的id应与下列center和right的class相关联 -->
+            <li class="bm-nav-xls-left-li" id="BM7-36"><a href="/Category/index/cat_id/36.html">户外防风卷帘</a></li>
+            <li class="bm-nav-xls-left-li" id="BM7-55"><a href="https://www.mr-banma.com/Goods/goodsInfo/id/75.html">户外遮阳伞</a>
+            </li>
+            <li class="bm-nav-xls-left-li" id="BM7-67"><a href="https://www.mr-banma.com/Goods/goodsInfo/id/80.html">曲臂遮阳篷</a>
+            </li>
+            <li class="bm-nav-xls-left-li" id="BM7-68"><a href="https://www.mr-banma.com/Goods/goodsInfo/id/82.html">海天篷（阳光篷）</a>
+            </li>
+        </ul>
+    </div>
+    <div class="bm-nav-xls-center BM7-36 hide">
+        <h3>户外防风卷帘</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>斑马先生防风卷帘，可以抗飓风的防风卷帘！更简洁，更平顺，更抗风！</p>
+    </div>
+    <div class="bm-nav-xls-right BM7-36 hide">
+        <video src="/Public/video/fangfengjuanlian.mp4" controls="controls"
+               poster="https://www.mr-banma.com/Uploads/images/2021-08-13/61161f614c633.jpg" width="560"
+               height="300"></video>
+
+
+    </div>
+    <div class="bm-nav-xls-center BM7-55 hide">
+        <h3>户外遮阳伞</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>斑马先生户外遮阳伞，防雨，防风，防紫外线。绿色环保，经久耐用！</p>
+    </div>
+    <div class="bm-nav-xls-right BM7-55 hide">
+
+        <a href="https://www.mr-banma.com/Goods/goodsInfo/id/75.html"><img
+                src="https://www.mr-banma.com/Uploads/images/2021-04-26/60865d8ba3e2d.jpg"></a>
+
+
+    </div>
+    <div class="bm-nav-xls-center BM7-67 hide">
+        <h3>曲臂遮阳篷</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>曲臂遮阳篷除了遮阳外，还可以防雨，防紫外线等；根据所需面积的大小，可以对遮阳篷进行伸缩调节，同时曲臂遮阳篷有许多种颜色可以选择，更好的搭配建筑的色彩与风格。</p>
+    </div>
+    <div class="bm-nav-xls-right BM7-67 hide">
+
+        <a href="https://www.mr-banma.com/Goods/goodsInfo/id/80.html"><img
+                src="https://www.mr-banma.com/Uploads/images/2021-07-19/60f521aded05c.jpg"></a>
+
+
+    </div>
+    <div class="bm-nav-xls-center BM7-68 hide">
+        <h3>海天篷（阳光篷）</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>斑马先生海天蓬外观简洁大气，与整体环境完美融合。全铝合金材质，耐晒防水，晴雨两用，使用寿命长。通风透气，电动开合，操作简单。</p>
+    </div>
+    <div class="bm-nav-xls-right BM7-68 hide">
+
+        <a href="https://www.mr-banma.com/Goods/goodsInfo/id/82.html"><img
+                src="https://www.mr-banma.com/Uploads/images/2021-07-28/610122d7dd4f9.jpg"></a>
+
+
+    </div>
+</div>
+<div class="bm-nav-xls BM57 hide">
+    <div class="bm-nav-xls-left">
+        <ul class="bm-nav-xls-left-ul">
+            <!-- 此处li的id应与下列center和right的class相关联 -->
+            <li class="bm-nav-xls-left-li" id="BM57-58"><a href="/index.php/Category/index/cat_id/58.html">除甲醛窗帘</a>
+            </li>
+            <li class="bm-nav-xls-left-li" id="BM57-59"><a href="/index.php/Category/index/cat_id/59.html">五防功能</a></li>
+            <li class="bm-nav-xls-left-li" id="BM57-60"><a
+                    href="https://www.mr-banma.com/index.php/Singlepage/diandong.html">电动智能</a></li>
+            <li class="bm-nav-xls-left-li" id="BM57-61"><a
+                    href="https://www.mr-banma.com/index.php/Singlepage/miandakong.html">免打孔窗帘</a></li>
+        </ul>
+    </div>
+    <div class="bm-nav-xls-center BM57-58 hide">
+        <h3>除甲醛窗帘</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>斑马先生联合韩国国立研究所共同研发，采用行业领先的沸石晶体分子筛除甲醛技术，吸附且分解甲醛，拒绝二次污染，除甲醛功效可达3年！为您打造绿色舒适的健康之家，孩子成长路上更放心，家人生活更安心。</p>
+    </div>
+    <div class="bm-nav-xls-right BM57-58 hide">
+        <video src="/Public/video/chujiaquan.mp4" controls="controls"
+               poster="https://www.mr-banma.com/Uploads/images/2021-05-09/6097969f047a0.jpg" width="560"
+               height="300"></video>
+
+
+    </div>
+    <div class="bm-nav-xls-center BM57-59 hide">
+        <h3>五防功能</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>随着时代的发展，科技的进步，人们对窗帘的需求不再仅仅只是遮挡，由此“五防”斑马帘应运而生，“防水、防火、防晒、防霉、防甲醛”，功能性更强，质量更优。</p>
+    </div>
+    <div class="bm-nav-xls-right BM57-59 hide">
+        <video src="/Public/video/mrbanma_wufang.mp4" controls="controls"
+               poster="https://www.mr-banma.com/Uploads/images/2021-05-09/60979b458e79f.jpg" width="560"
+               height="300"></video>
+
+
+    </div>
+    <div class="bm-nav-xls-center BM57-60 hide">
+        <h3>电动智能</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>斑马先生全系产品都可做电动智能窗帘。窗帘开合随心控，智能生活美好进阶！</p>
+    </div>
+    <div class="bm-nav-xls-right BM57-60 hide">
+
+        <a href="https://www.mr-banma.com/index.php/Singlepage/diandong.html"><img
+                src="https://www.mr-banma.com/Uploads/images/2021-05-13/609cd21d6b7c3.jpg"></a>
+
+
+    </div>
+    <div class="bm-nav-xls-center BM57-61 hide">
+        <h3>免打孔窗帘</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>免打孔系统不伤墙面，装饰美家不忘安全，新升级免打孔系统安装牢固不掉落。</p>
+    </div>
+    <div class="bm-nav-xls-right BM57-61 hide">
+
+        <a href="https://www.mr-banma.com/index.php/Singlepage/miandakong.html"><img
+                src="https://www.mr-banma.com/Uploads/images/2021-05-13/609cd40370fec.jpg"></a>
+
+
+    </div>
+</div>
+<div class="bm-nav-xls BM37 hide">
+    <div class="bm-nav-xls-left">
+        <ul class="bm-nav-xls-left-ul">
+            <!-- 此处li的id应与下列center和right的class相关联 -->
+        </ul>
+    </div>
+</div>
+<div class="bm-nav-xls BM39 hide">
+    <div class="bm-nav-xls-left">
+        <ul class="bm-nav-xls-left-ul">
+            <!-- 此处li的id应与下列center和right的class相关联 -->
+            <li class="bm-nav-xls-left-li" id="BM39-42"><a href="/index.php/Category/index/cat_id/42.html">特价产品</a></li>
+            <li class="bm-nav-xls-left-li" id="BM39-52"><a href="/index.php/Category/index/cat_id/52.html">品牌工具包</a>
+            </li>
+            <li class="bm-nav-xls-left-li" id="BM39-50"><a
+                    href="https://www.mr-banma.com/index.php/singlepage/company_buy.html">企业采购</a></li>
+            <li class="bm-nav-xls-left-li" id="BM39-48"><a href="https://www.mr-banma.com/Activity/newpeople">新人享礼</a>
+            </li>
+        </ul>
+    </div>
+    <div class="bm-nav-xls-center BM39-42 hide">
+        <h3>特价产品</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>钜惠惊喜不断，高品质，低价格，斑马先生特价产品，让你用更低的价格享受调光生活。</p>
+    </div>
+    <div class="bm-nav-xls-right BM39-42 hide">
+
+        <a href="/index.php/Category/index/cat_id/42.html"><img
+                src="https://www.mr-banma.com/Uploads/images/2020-11-20/5fb714276eab3.jpg"></a>
+
+
+    </div>
+    <div class="bm-nav-xls-center BM39-52 hide">
+        <h3>品牌工具包</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>斑马先生品牌工具包，内含各系列产品面料，及配件展示。</p>
+    </div>
+    <div class="bm-nav-xls-right BM39-52 hide">
+
+        <a href="/index.php/Category/index/cat_id/52.html"><img
+                src="https://www.mr-banma.com/Uploads/images/2021-01-18/6004fb13dc3d9.jpg"></a>
+
+
+    </div>
+    <div class="bm-nav-xls-center BM39-50 hide">
+        <h3>企业采购</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>斑马先生企业采购，多、快、好、省！更多企业的选择！</p>
+    </div>
+    <div class="bm-nav-xls-right BM39-50 hide">
+
+        <a href="https://www.mr-banma.com/index.php/singlepage/company_buy.html"><img
+                src="https://www.mr-banma.com/Uploads/images/2020-12-26/5fe6ec902adc0.jpg"></a>
+
+
+    </div>
+    <div class="bm-nav-xls-center BM39-48 hide">
+        <h3>新人享礼</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>斑马先生新人享礼，特别的礼物属于特别的你！</p>
+    </div>
+    <div class="bm-nav-xls-right BM39-48 hide">
+
+        <a href="https://www.mr-banma.com/Activity/newpeople"><img
+                src="https://www.mr-banma.com/Uploads/images/2020-12-11/5fd2b27e3d4fd.jpg"></a>
+
+
+    </div>
+</div>
+<div class="bm-nav-xls BM23 hide">
+    <div class="bm-nav-xls-left">
+        <ul class="bm-nav-xls-left-ul">
+            <!-- 此处li的id应与下列center和right的class相关联 -->
+        </ul>
+    </div>
+</div>
+<div class="bm-nav-xls BM62 hide">
+    <div class="bm-nav-xls-left">
+        <ul class="bm-nav-xls-left-ul">
+            <!-- 此处li的id应与下列center和right的class相关联 -->
+            <li class="bm-nav-xls-left-li" id="BM62-63"><a href="/Singlepage/store">线下门店</a></li>
+            <li class="bm-nav-xls-left-li" id="BM62-38"><a href="/index.php/Singlepage/gongchang">斑马工厂</a></li>
+            <li class="bm-nav-xls-left-li" id="BM62-64"><a href="/Article/cat_list/cat_id/1">斑马动态</a></li>
+            <li class="bm-nav-xls-left-li" id="BM62-24"><a href="/Article/cat_list/cat_id/2">斑马小课堂</a></li>
+            <li class="bm-nav-xls-left-li" id="BM62-70"><a href="http://h2.veqxiu.net/q/92910572_VVI42RDE">斑马先生杂志</a>
+            </li>
+        </ul>
+    </div>
+    <div class="bm-nav-xls-center BM62-63 hide">
+        <h3>线下门店</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>斑马先生线下加盟店，全国服务网络。</p>
+    </div>
+    <div class="bm-nav-xls-right BM62-63 hide">
+
+        <a href="/Singlepage/store"><img src="https://www.mr-banma.com/Uploads/images/2021-05-13/609cf8f9827dd.jpg"></a>
+
+
+    </div>
+    <div class="bm-nav-xls-center BM62-38 hide">
+        <h3>斑马工厂</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>斑马先生权威实验室；斑马先生成品加工厂;斑马先生优质供应商；斑马先生全国服务网络</p>
+    </div>
+    <div class="bm-nav-xls-right BM62-38 hide">
+
+        <a href="/index.php/Singlepage/gongchang"><img
+                src="https://www.mr-banma.com/Uploads/images/2021-05-13/609cfe0c14511.jpg"></a>
+
+
+    </div>
+    <div class="bm-nav-xls-center BM62-64 hide">
+        <h3>斑马动态</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>斑马先生最新动态，见证斑马先生成长！</p>
+    </div>
+    <div class="bm-nav-xls-right BM62-64 hide">
+
+        <a href="/Article/cat_list/cat_id/1"><img
+                src="https://www.mr-banma.com/Uploads/images/2021-05-13/609cfe4c0af8f.jpg"></a>
+
+
+    </div>
+    <div class="bm-nav-xls-center BM62-24 hide">
+        <h3>斑马小课堂</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>最流行的窗饰家居搭配及百科，最新的行业信息及发展趋势。</p>
+    </div>
+    <div class="bm-nav-xls-right BM62-24 hide">
+
+        <a href="/Article/cat_list/cat_id/2"><img
+                src="https://www.mr-banma.com/Uploads/images/2021-05-13/609cf88f4dcab.jpg"></a>
+
+    </div>
+    <div class="bm-nav-xls-center BM62-70 hide">
+        <h3>斑马先生杂志</h3>
+        <div class="bm-nav-xls-line">
+            <div class="line-left"></div>
+            <div class="line-right"></div>
+        </div>
+        <p>《斑马先生》杂志，为消费者提供最新的遮阳行业动态及产品信息。</p>
+    </div>
+    <div class="bm-nav-xls-right BM62-70 hide">
+
+        <a href="http://h2.veqxiu.net/q/92910572_VVI42RDE"><img
+                src="https://www.mr-banma.com/Uploads/images/2021-11-14/6190545c782d6.jpg"></a>
+
+
+    </div>
+</div>
+<div class="bm-nav-xls BM66 hide">
+    <div class="bm-nav-xls-left">
+        <ul class="bm-nav-xls-left-ul">
+            <!-- 此处li的id应与下列center和right的class相关联 -->
+        </ul>
+    </div>
+</div>
+<div class="bm-nav-xls BM71 hide">
+    <div class="bm-nav-xls-left">
+        <ul class="bm-nav-xls-left-ul">
+            <!-- 此处li的id应与下列center和right的class相关联 -->
+        </ul>
+    </div>
+</div>
+<style type="text/css">
+    .hasbg a {
+        color: #fff;
+    }
+</style>
+
+<!-- 一级菜单导航展示页 js 代码-->
+<script type="text/javascript">
+    var timeout1;
+    $('.bm-nav-items').hover(function () {
+        var item = $(this)[0].id
+        if (item != '') {
+            // 提前隐藏所有hover展示页，预防展示冲突
+            window.clearTimeout(timeout1); //清除定时器，防止hover改变后延时隐藏
+            $('.bm-nav-xls').addClass('hide');
+            $('.' + item).removeClass('hide');
+            // 设置二级导航hover事件
+            $('.bm-nav-xls-center').addClass('hide');
+            $('.bm-nav-xls-right').addClass('hide');
+            $('.' + item).children().eq(0).find('.bm-nav-xls-left-li').eq(0).addClass('hasbg').siblings().removeClass('hasbg');
+            $('.' + item).children().eq(1).removeClass('hide');
+            $('.' + item).children().eq(2).removeClass('hide');
+        }
+    }, function () {
+        var item = $(this)[0].id;
+        if (item != '') {
+            var flag = 0;
+            $('.' + item).hover(function () {
+                //是否需要隐藏展示页 0需要隐藏
+                flag = 1
+            }, function () {
+                setTimeout(function () {
+                    $('.' + item).addClass('hide');
+                }, 1)
+            })
+            // 延时隐藏，给鼠标移到展示页所需要的时间
+            timeout1 = setTimeout(function () {
+                if (flag == 0) {
+                    $('.' + item).addClass('hide');
+                }
+            }, 500)
+        }
+    })
+
+
+    /* 二级导航-导航栏hover展示相关页面 */
+    $('.bm-nav-xls-left-li').hover(function () {
+        $('.bm-nav-xls-left-li').removeClass('hasbg')
+        $(this).addClass('hasbg')
+        //console.log($(this))
+        var item = $(this)[0].id;
+        $('.bm-nav-xls-center').addClass('hide');
+        $('.bm-nav-xls-right').addClass('hide');
+        $('.' + item).removeClass('hide');
+    }, function () {
+    });
+
+    //鼠标移入的方法
+    $(function () {
+        window.onscroll = function () {
+            var t = document.documentElement.scrollTop || document.body.scrollTop; //获取滚动距离
+            if (t >= 200) {
+                $('.bm-nav-fixed').removeClass('hide');
+                $('.bm-nav-xls').addClass('guding');
+            }
+            if (t < 200) {
+                $('.bm-nav-fixed').addClass('hide');
+                $('.bm-nav-xls').removeClass('guding');
+            }
+        }
+
+    })
+
+    function login() {
+        $('.plus-dialog-membership').show();
+        $('.plus-dialog-login').show();
+        $('.plus-dialog-register').hide();
+        //$(window).scrollTop(0);
+        var h = $(document).scrollTop();
+        $('.plus-dialog-body').css("top", (h + 100) + "px");
+    }
+
+    function register() {
+        $(window).scrollTop(0);
+        $('.plus-dialog-membership').show();
+        $('.plus-dialog-register').show();
+        $('.plus-dialog-login').hide();
+    }
+</script>
+
 </body>
 </html>

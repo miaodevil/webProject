@@ -942,3 +942,12 @@ a.agrayright { cursor: default; background-position: -51px 50%; }
 .tt-cover-list-item-label span{display: inline-block;font-size: 12px;line-height: 12px;padding: 4px 6px;background: #DAAF57;color: #fff;margin-right: 6px;margin-top: 6px;}
 
 .tt-sec-nav-cover-img{width: 100%;height: auto;}
+
+.nav-icon {
+	position: relative;
+	top: 10px;
+}
+
+.fixed-bm-nav {
+
+}
